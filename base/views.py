@@ -5,6 +5,7 @@ from .forms import TodoForm, SignupForm, LoginForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils import timezone
 # from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
@@ -22,9 +23,10 @@ def home(request):
             tasks = tasks.filter(completed=False)
         else:
             tasks = tasks
+    now = timezone.now()
 
     context = {
-        'title': title, 'tasks': tasks,
+        'title': title, 'tasks': tasks, 'now': now
     }
     return render(request, 'base/home.html', context)
 
