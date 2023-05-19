@@ -27,8 +27,6 @@ def home(request):
 
     context = {
         'title': title, 'tasks': tasks,
-        # 'tasks_filter': tasks_filter,
-        # 'completed': completed, 'not_completed': not_completed,
     }
     return render(request, 'base/home.html', context)
 

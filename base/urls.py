@@ -8,6 +8,6 @@ urlpatterns = [
     path("register/", views.registerUser, name='register-user'),
 
     path("task/<str:pk>/", views.viewTask, name='task'),
-    path("add/", views.addTask, name='add-task'),
-    path("delete/<str:pk>", views.deleteTask, name='delete'),
+    path("add-task/", views.addTask, name='add-task'),
+    path("delete-task/<str:pk>", views.deleteTask, name='delete-task'),
 ]

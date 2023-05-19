@@ -23,7 +23,7 @@ class TodoForm(ModelForm):
             'description': forms.Textarea(attrs={
                 'class': 'form-control rounded-25',
             }),
-            'due date': forms.DateTimeInput(attrs={
+            'due_date': forms.DateTimeInput(attrs={
                 'class': 'form-control rounded-25',
                 'placeholder': 'YYYY-MM-DD',
             }),
