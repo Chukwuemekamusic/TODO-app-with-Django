@@ -10,11 +10,6 @@ class TodoForm(ModelForm):
         model = Todo
         fields = '__all__'
         exclude = ['user']
-        error_messages = {
-            'completed': {
-                'required': 'Please indicate whether the task is completed or not.',
-            },
-        }
         widgets = {
             'title': forms.TextInput(attrs={
                 'placeholder': 'Your title',
@@ -27,7 +22,12 @@ class TodoForm(ModelForm):
                 'class': 'form-control rounded-25',
                 'placeholder': 'YYYY-MM-DD',
             }),
+            # 'completed': forms.HiddenInput(),
         }
+
+        # def __init__(self, *args, **kwargs):
+        #     super().__init__(*args, **kwargs)
+        #     self.fields['completed'].initial = self.instance.completed
 
 
 class SignupForm(UserCreationForm):

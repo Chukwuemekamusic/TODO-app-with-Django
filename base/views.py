@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Todo
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .forms import TodoForm, SignupForm, LoginForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
 # from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
@@ -76,6 +78,7 @@ def logoutUser(request):
     return redirect('home')
 
 
+@login_required(login_url='login')
 def viewTask(request, pk):
     task = Todo.objects.get(id=pk)
     form = TodoForm(instance=task)
@@ -88,7 +91,7 @@ def viewTask(request, pk):
     return render(request, 'base/task.html', context)
 
 
-@login_required
+@login_required(login_url='login')
 def addTask(request):
     form = TodoForm()
     if request.method == 'POST':
@@ -112,6 +115,15 @@ def deleteTask(request, pk):
         return redirect('home')
     context = {'obj': f"{task} TASK"}
     return render(request, 'base/delete.html', context)
+
+
+class UpdateTask(UpdateView):
+    model = Todo
+    # fields = '__all__'
+    success_url = reverse_lazy('home')
+    context_object_name = 'task'
+    form_class = TodoForm
+    template_name = 'base/update.html'
 
 # def filterTask(request):
 #     task

@@ -31,6 +31,7 @@
 </div>
 <br>
 <a href="{% url 'home' %}">Back to Tasks</a><br>
+<a href="{% url 'update-task' task.id%}">Update Task</a><br>
 <a href="{% url 'delete-task' task.id%}">Delete this Task</a>
 
 {% endblock content %}

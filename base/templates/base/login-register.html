@@ -60,13 +60,3 @@
 {% endif %}
 
 {% endblock content %}
-{% block js %}
-<script>
-    $(document).ready(function() {
-        $('input[data-placeholder]').each(function() {
-            $(this).attr('placeholder', $(this).data('placeholder'));
-        });
-    });
-</script>
-
-{% endblock js %}
