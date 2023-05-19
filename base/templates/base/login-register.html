@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+{% if page == 'login' %}
+<h1 class="mb-6 mt-3">Log in</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <!-- {{form.as_p}} -->
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Username</label>
+        <div class="col-sm-10">{{ form.username }}
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Password</label>
+        <div class="col-sm-10">{{ form.password }}
+        </div>
+    </div>
+    
+    <button class="btn btn-primary">Log in</button>
+</form>
+<div class="justify-center">
+    <p>Not yet registered?</p>
+    <a href="{% url 'register-user' %}">click here</a>
+</div>
+
+{% else %}
+<h1 class="mb-6 mt-3">Register</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Username</label>
+        <div class="col-sm-10">{{form.username}}</div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Email</label>
+        <div class="col-sm-10">{{form.email}}</div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Password</label>
+        <div class="col-sm-10">{{form.password1}}</div>
+    </div>
+    <div class="form-group row mb-3">
+        <label for="" class="col-sm-2 col-form-label mb-2">Repeat Password</label>
+        <div class="col-sm-10">{{form.password2}}</div>
+    </div>
+
+    {% if form.errors or form.non_field_errors %}
+    <div class="form-group mb-3">
+        {% for field in form %}
+        <!-- <field class="errors">{{field.errors}}</field> -->
+        {{field.errors}}
+        {{form.non_field_errors}}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <button class="btn btn-primary">Register</button>
+</form>
+{% endif %}
+
+{% endblock content %}

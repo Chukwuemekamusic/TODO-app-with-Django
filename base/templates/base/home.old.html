@@ -1,0 +1,31 @@
+{% extends 'main.html' %} 
+
+{% block content %}
+<!-- <div class="row">
+  <div class="col-md-4">{% include 'offcanvas.html' %}</div> -->
+
+<h1>{{title}}</h1>
+{% if request.user.is_authenticated %}
+<ul>
+  {% if tasks and request.user == tasks.0.user %}
+  {% for task in tasks %}
+  <!-- completed Tasks -->
+  {% if task.completed %}
+  <a href="{% url 'task' task.id %}">
+    <li class="text-success">
+      {{task|title}}
+      <i class="fas fa-check"></i>
+    </li>
+  </a>
+  <!-- not_completed Tasks -->
+  {% else %}
+  <a href="{% url 'task' task.id %}">
+    <li>{{task|title}}</li>
+  </a>
+  {% endif %} {% endfor %} {% endif %}
+</ul>
+<a href="{% url 'add-task' %}">Add Task</a>
+{% else %}
+<p><i>Not yet registered?</i></p>
+<a href="{% url 'register-user' %}">register and add task</a>
+{% endif %} 

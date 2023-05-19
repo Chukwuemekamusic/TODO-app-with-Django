@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  
+<h1>{{title}}</h1>
+<a href="{% url 'add-task' %}">Add New Task</a>
+{% if request.user.is_authenticated %}
+{% if tasks and request.user == tasks.0.user %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Action</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {% for task in tasks %}
+    <!-- completed Tasks -->
+    {% if task.completed %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>
+        <span class="text-success">
+          {{task|title}}
+        </span>
+      </td>
+      <td>
+        <a href="{% url 'task' task.id %}">View</a> 
+        <a href="{% url 'task' task.id %}">Edit</a>
+      </td>
+      <td><i class="fas fa-check text-success"></i></td>
+    </tr>
+    {% else %}
+    <!-- not_completed Tasks -->
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>
+        <span>
+          {{task|title}}
+        </span>
+      </td>
+      <td>
+        <a href="{% url 'task' task.id %}">View</a> 
+        <a href="{% url 'task' task.id %}">Edit</a>
+      
+      </td>
+      <td><i class="far fa-times-circle text-danger"></i></td>
+    </tr>
+    {% endif %} 
+    {% endfor %}
+  </tbody>
+</table>
+{% else %} <p>no task yet</p>
+{% endif %}
+{% else %}
+<p><i>Not yet registered?</i></p>
+<a href="{% url 'register-user' %}">register and add task</a>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>{{task|title}}</h1>
+
+{% if task.description %}
+<div class="my-4">
+    <strong>Description:</strong> {{task.description}}
+</div>
+{% endif %}
+<div class="my-4">
+    <strong>Due Date:</strong> {{task.due_date}}
+</div>
+<hr>
+<div>
+    <strong>Completed:</strong> {% if task.completed %} Yes {% else %} NO {% endif %} <br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        {% if field.label == 'Completed' %}
+        <div>{{field}} <i>tick if tasks is completed</i></div>
+        {% else %}
+        <div style="display: none;">{{ field }}</div>
+        {% endif %}
+        {% endfor %}
+        <input type="submit" value="Save">
+    </form>
+
+</div>
+<br>
+<a href="{% url 'home' %}">Back to Tasks</a><br>
+<a href="{% url 'delete' task.id%}">Delete this Task</a>
+
+{% endblock content %}

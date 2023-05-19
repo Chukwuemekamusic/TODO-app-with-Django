@@ -1,0 +1,71 @@
+/* body {
+    ...
+} */
+
+header {
+    background-color: rgb(172, 193, 158);
+    padding: 20px;
+    text-align: center;
+}
+
+nav.navbar.navbar-expand-lg.bg-body-tertiary{
+    background-color: rgb(14, 147, 147) ;
+}
+
+nav {
+    z-index: 1;
+}
+.hero {
+    justify-content: center;
+}
+
+/* .footer {
+    position: absolute;
+} */
+
+.hero {
+    /* background-image: url(/folklore/assests/img/hero-image2.jpg); */ 
+    /* background-size: cover; */
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    /* color: #fff;
+    text-shadow: 0 0 5px #000; */
+}
+
+.caro{
+   /* width: 960px;
+   height: 500px; */
+   justify-content: center;
+   height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.caro-img {
+    width: 960px;
+    height: 500px;
+    border: 0px;
+    
+    
+}
+
+.carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
