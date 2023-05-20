@@ -22,7 +22,7 @@ class TodoForm(ModelForm):
                 'class': 'form-control rounded-25',
                 'placeholder': 'YYYY-MM-DD',
             }),
-            # 'completed': forms.HiddenInput(),
+       
         }
 
         # def __init__(self, *args, **kwargs):

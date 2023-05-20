@@ -10,7 +10,8 @@
 </div>
 {% endif %}
 <div class="my-4">
-    <strong>Due Date:</strong> {{task.due_date}}
+    <strong>Due Date:</strong> {{task.due_date}} <br>
+    <small><i><span>{% if not task.completed and task.due_date|timeuntil %} {{task.due_date|timeuntil}} more {% endif %}</span></i></small>
 </div>
 <hr>
 <div>
